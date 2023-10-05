@@ -1,30 +1,52 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <v-app>
+    <NavBar v-if="auth" />
+    <v-main style="background-color: #fff3e0" class="">
+      <router-view />
+      <v-dialog v-model="loading" hide-overlay persistent width="300">
+        <v-card color="#ffde59" dark>
+          <v-card-text>
+            Disconnecting ...
+            <v-progress-linear
+              indeterminate
+              color="white"
+              class="mb-0"
+            ></v-progress-linear>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </v-main>
+
+    <FooterComponent />
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import { mapActions } from "vuex";
+import NavBar from "./components/NavBar.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+export default {
+  name: "App",
 
-nav {
-  padding: 30px;
+  data: () => ({
+    user: null,
+  }),
+  components: {
+    NavBar,
+    FooterComponent,
+  },
+  computed: {
+    auth() {
+      return this.$store.getters.isAuthenticated;
+    },
+    loading() {
+      return this.$store.getters.getLoadingLogOut;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("setUser", JSON.parse(localStorage.getItem("user")));
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    this.$store.dispatch("updateToken", localStorage.getItem("token"));
+  },
+};
+</script>
