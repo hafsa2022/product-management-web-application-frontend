@@ -6,7 +6,10 @@ export default {
   async signUp(form) {
     return await axios.post("http://localhost:8000/api/signup", form);
   },
-  async logout() {
+  async logOut() {
     return await axios.post("http://localhost:8000/api/logout");
   },
+  // async getUser() {
+  //   return await axios.get("http://localhost:8000/api/getuser");
+  // },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center mr-10">
+  <div class="text-center">
     <v-menu offset-x>
       <template v-slot:activator="{ props }">
         <v-btn icon v-bind="props">
@@ -10,15 +10,32 @@
           </v-avatar>
         </v-btn>
       </template>
-      <v-list class="avmenu">
-        <v-btn depressed text width="100%" to="/"> Logout </v-btn>
+      <v-list class="avmenu" style="background: #f9af23">
+        <v-btn
+          depressed
+          text
+          width="100%"
+          @click="logout"
+          style="background: #f9af23"
+          elevation="0"
+        >
+          Logout
+        </v-btn>
       </v-list>
     </v-menu>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "MenuComponent",
+  methods: {
+    async logout() {
+      this.$store.dispatch("setLogOut");
+      this.$router.replace(this.$route.query.redirect || "/login");
+    },
+  },
+};
 </script>
 
 <style>

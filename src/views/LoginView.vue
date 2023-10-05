@@ -83,7 +83,7 @@
               block
               class="mt-2"
               text="Register Now"
-              to="/singin"
+              to="/signup"
               size="large"
               color="#f9af23"
             ></v-btn>
@@ -95,14 +95,8 @@
   <div>
     <v-snackbar v-model="snackbar.show" :color="snackbar.color">
       {{ snackbar.text }}
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="white"
-          text
-          class=""
-          v-bind="attrs"
-          @click="closeSnackbar"
-        >
+      <template v-slot:action:actions>
+        <v-btn color="white" text class="" @click="closeSnackbar">
           Close
         </v-btn>
       </template>
@@ -139,7 +133,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(["SetUserInfo"]),
+    ...mapActions(["logIn"]),
     async login() {
       this.loading = true;
       const params = {
@@ -151,12 +145,12 @@ export default {
           if (response != null) {
             this.loading = false;
             this.$store.dispatch("setSnackBar", {
-              color: "#ffde59 lighten-1",
+              color: "#ffde59",
               text: "Welcome to our website!",
               show: true,
             });
             this.$router.replace(this.$route.query.redirect || "/");
-            this.SetUserInfo(response);
+            this.logIn(response);
           }
         })
         .catch((err) => {

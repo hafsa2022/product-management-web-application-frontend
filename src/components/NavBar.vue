@@ -12,8 +12,8 @@
       </span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-row justify="end" class="my-2 flex align-center">
-      <MenuComponent />
+    <v-row justify="end" class="my-2 mx-6 flex align-center">
+      <MenuComponent v-if="user" />
       <!-- <AvatarMenu v-if="user" :user-data="user" /> -->
       <div v-if="user" class="mx-2 mt-4">
         <h5 class="bold" style="font-size: 14px; color: #192a3e">

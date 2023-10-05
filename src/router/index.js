@@ -2,9 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import signUpView from "../views/SignUpView.vue";
-import AddProductView from "../views/AddProductView.vue";
-import EditProductView from "../views/EditProductView.vue";
-import ViewProductView from "../views/ViewProductView.vue";
 
 const routes = [
   {
@@ -16,21 +13,6 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginView,
-  },
-  {
-    path: "/addproduct",
-    name: "addproduct",
-    component: AddProductView,
-  },
-  {
-    path: "/editproduct",
-    name: "addproduct",
-    component: EditProductView,
-  },
-  {
-    path: "/viewproduct",
-    name: "viewproduct",
-    component: ViewProductView,
   },
   {
     path: "/signup",

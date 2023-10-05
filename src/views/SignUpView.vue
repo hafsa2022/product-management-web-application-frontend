@@ -130,14 +130,8 @@
     <div>
       <v-snackbar v-model="snackbar.show" :color="snackbar.color">
         {{ snackbar.text }}
-        <template v-slot:action="{ attrs }">
-          <v-btn
-            color="white"
-            text
-            class=""
-            v-bind="attrs"
-            @click="closeSnackbar"
-          >
+        <template v-slot:action:actions>
+          <v-btn color="white" text class="" @click="closeSnackbar">
             Close
           </v-btn>
         </template>
@@ -187,10 +181,6 @@ export default {
       },
     };
   },
-  mounted() {
-    // this.userNameErrors = null;
-    // this.emailErrors = null;
-  },
   computed: {
     ...mapState({
       snackbar: (state) => state.snackbar,
@@ -211,7 +201,7 @@ export default {
             if (response != null) {
               this.loading = false;
               this.$store.dispatch("setSnackBar", {
-                color: "#ffde59 lighten-1",
+                color: "#ffde59",
                 text: "Account was created successfully , you can login now!",
                 show: true,
               });
