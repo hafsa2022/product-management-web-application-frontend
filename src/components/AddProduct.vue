@@ -8,9 +8,9 @@
       max-width="600px"
     >
       <v-card class="rounded-lg">
-        <v-card-title>
+        <!-- <v-card-title>
           <span>Add New Product</span>
-        </v-card-title>
+        </v-card-title> -->
         <v-card-text>
           <v-dialog v-model="loading" hide-overlay persistent width="300">
             <v-card color="#ffde59" dark>
@@ -27,7 +27,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" class="pa-0">
-                <label for="name">Name</label>
+                <label for="name">Product Name</label>
                 <v-text-field
                   id="name"
                   v-model="form.name"
@@ -42,7 +42,7 @@
                 />
               </v-col>
               <v-col cols="12" class="pa-0">
-                <label for="description">Description</label>
+                <label for="description">Product Description</label>
                 <v-text-field
                   id="description"
                   v-model="form.description"
@@ -56,7 +56,7 @@
               </v-col>
 
               <v-col cols="12" class="pa-0">
-                <label for="price">Price</label>
+                <label for="price">Product Price</label>
                 <v-text-field
                   id="price"
                   v-model="form.price"
@@ -68,7 +68,7 @@
                 />
               </v-col>
               <v-col cols="12" class="pa-0">
-                <label for="size">Size</label>
+                <label for="size">Product Size</label>
                 <v-text-field
                   id="size"
                   v-model="form.size"
@@ -80,7 +80,7 @@
                 />
               </v-col>
               <v-col cols="12" class="pa-0">
-                <label for="type">Type</label>
+                <label for="type">Product Type</label>
                 <v-text-field
                   id="type"
                   v-model="form.type"
@@ -92,7 +92,7 @@
                 />
               </v-col>
               <v-col cols="12" class="pa-0">
-                <label for="image">Image</label>
+                <label for="image">Product Image</label>
                 <v-file-input
                   v-model="form.image"
                   accept="image/*"
@@ -100,7 +100,6 @@
                   class="mt-1 rounded-lg"
                   color="#f9af23"
                   variant="outlined"
-                  placeholder="Choose Image"
                   @change="imagePreview($event)"
                 ></v-file-input>
               </v-col>
@@ -198,7 +197,7 @@ export default {
             this.$store.dispatch("getProducts");
             this.$store.dispatch("setDisplayingDialog", false);
             this.$store.dispatch("setSnackBar", {
-              color: "#fff3e0 lighten-1",
+              color: "#ffde59",
               text: "Product was added successfully!",
               show: true,
             });

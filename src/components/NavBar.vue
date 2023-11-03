@@ -12,7 +12,7 @@
       </span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-row justify="end" class="my-2 mx-6 flex align-center">
+    <v-row justify="end" class="my-2 mx-6 flex align-center" v-if="auth">
       <MenuComponent v-if="user" />
       <!-- <AvatarMenu v-if="user" :user-data="user" /> -->
       <div v-if="user" class="mx-2 mt-4">
@@ -41,6 +41,9 @@ export default {
     ...mapState({
       user: (state) => state.user,
     }),
+    auth() {
+      return this.$store.getters.isAuthenticated;
+    },
   },
 };
 </script>

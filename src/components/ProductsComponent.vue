@@ -6,7 +6,7 @@
       style="background-color: #fff3e0"
     >
       <v-row justify="center">
-        <v-col cols="6">
+        <v-col lg="6" md="6" sm="10">
           <v-card elevation="0" style="background-color: #fff3e0">
             <v-card-title>
               <v-text-field
@@ -24,7 +24,7 @@
         </v-col>
       </v-row>
       <v-row justify="end">
-        <v-col cols="2">
+        <v-col lg="1" md="1" sm="2">
           <v-card elevation="0" style="background-color: #fff3e0">
             <v-card-title>
               <v-text-field
@@ -68,7 +68,6 @@ export default {
       currentPage: 1,
       cardsPerPage: 2, // Number of cards per page
       searchedCards: [],
-      // products: [],
     };
   },
   mounted() {

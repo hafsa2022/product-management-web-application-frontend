@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row justify="end">
-      <v-col cols="1" class="pa-4">
+      <v-col lg="1" md="1" sm="2" xsm="4" class="pa-4 mr-5">
         <v-btn
           type="submit"
           block
@@ -15,8 +15,8 @@
     ></v-row>
     <AddProduct />
     <ProductsComponent />
-    <v-row justify="center" class="mb-8">
-      <v-col cols="3"
+    <v-row justify="center" class="mb-8 px-6">
+      <v-col lg="3" md="3" sm="4"
         ><v-btn v-if="auth" block color="#f9af23" @click="addProduct"
           >Add New Product</v-btn
         ></v-col

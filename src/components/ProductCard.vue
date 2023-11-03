@@ -39,19 +39,29 @@
                       height="300"
                       class="img-decoration mx-auto mt-2 mb-2"
                     />
-                    <v-card-title class="text-wrap">{{
+                    <v-card-title class="text-wrap text-center">{{
                       product.name
                     }}</v-card-title>
-                    <v-card-text class="text-gray"
+                    <v-card-text class="text-gray ml-10 pt-4"
                       ><p>
-                        <span class="">Desciption : </span
+                        <span class="">
+                          <strong>Product Desciption : </strong></span
                         >{{ product.description }}
                       </p>
-                      <p><span>Price : </span>{{ product.price }} dh</p>
-                      <p><span>Size : </span>{{ product.size }}</p>
-                      <p><span>Type : </span>{{ product.type }}</p>
                       <p>
-                        <span>Stock Quantity : </span
+                        <span> <strong>Product Price : </strong></span
+                        >{{ product.price }} DH
+                      </p>
+                      <p>
+                        <span> <strong>Product Size : </strong></span
+                        >{{ product.size }}
+                      </p>
+                      <p>
+                        <span> <strong>Product Type : </strong></span
+                        >{{ product.type }}
+                      </p>
+                      <p>
+                        <span> <strong>Quantity :</strong> </span
                         >{{ product.stock_quantity }}
                       </p></v-card-text
                     >
@@ -87,9 +97,9 @@
                   </v-btn>
                 </template>
                 <v-card class="rounded-lg">
-                  <v-card-title>
+                  <!-- <v-card-title>
                     <span>Edit Product</span>
-                  </v-card-title>
+                  </v-card-title> -->
                   <v-card-text>
                     <v-dialog
                       v-model="loading"
@@ -111,7 +121,7 @@
                     <v-container>
                       <v-row>
                         <v-col cols="12" class="pa-0">
-                          <label for="name">Name</label>
+                          <label for="name">Product Name</label>
                           <v-text-field
                             id="name"
                             v-model="form.name"
@@ -125,7 +135,7 @@
                           />
                         </v-col>
                         <v-col cols="12" class="pa-0">
-                          <label for="description">Description</label>
+                          <label for="description">Product Description</label>
                           <v-text-field
                             id="description"
                             v-model="form.description"
@@ -139,7 +149,7 @@
                         </v-col>
 
                         <v-col cols="12" class="pa-0">
-                          <label for="price">Price</label>
+                          <label for="price">Product Price</label>
                           <v-text-field
                             id="price"
                             v-model="form.price"
@@ -151,7 +161,7 @@
                           />
                         </v-col>
                         <v-col cols="12" class="pa-0">
-                          <label for="size">Size</label>
+                          <label for="size">Product Size</label>
                           <v-text-field
                             id="size"
                             v-model="form.size"
@@ -163,7 +173,7 @@
                           />
                         </v-col>
                         <v-col cols="12" class="pa-0">
-                          <label for="type">Type</label>
+                          <label for="type">Product Type</label>
                           <v-text-field
                             id="type"
                             v-model="form.type"
@@ -175,7 +185,7 @@
                           />
                         </v-col>
                         <v-col cols="12" class="pa-0">
-                          <label for="image">Image</label>
+                          <label for="image">Product Image</label>
                           <v-file-input
                             v-model="form.image"
                             accept="image/*"
@@ -201,10 +211,7 @@
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn
-                      color="#f9af23 darken-1"
-                      @click="displayingUpdateDialog = false"
-                    >
+                    <v-btn color="" @click="displayingUpdateDialog = false">
                       Close
                     </v-btn>
                     <v-btn
@@ -268,7 +275,10 @@
                       @click="displayingDeleteDialog = false"
                       >Cancel</v-btn
                     >
-                    <v-btn color="#f9af23 darken-1" @click="deleteProduct"
+                    <v-btn
+                      color="#f9af23 darken-1"
+                      style="background: #f9af23"
+                      @click="deleteProduct"
                       >Yes</v-btn
                     >
                     <v-spacer></v-spacer>
@@ -369,8 +379,8 @@ export default {
             this.$store.dispatch("getProducts");
             this.displayingUpdateDialog = false;
             this.$store.dispatch("setSnackBar", {
-              color: "#fff3e0 lighten-1",
-              text: "Product was added successfully!",
+              color: "#ffde59",
+              text: "Product was updated successfully!",
               show: true,
             });
           }
@@ -408,7 +418,7 @@ export default {
             this.$store.dispatch("getProducts");
             this.displayingDeleteDialog = false;
             this.$store.dispatch("setSnackBar", {
-              color: "#fff3e0 lighten-1",
+              color: "#ffde59",
               text: "Product was deleted successfully!",
               show: true,
             });

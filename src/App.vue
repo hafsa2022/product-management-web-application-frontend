@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar v-if="auth" />
+    <NavBar />
     <v-main style="background-color: #fff3e0" class="">
       <router-view />
       <v-dialog v-model="loading" hide-overlay persistent width="300">
@@ -36,9 +36,9 @@ export default {
     FooterComponent,
   },
   computed: {
-    auth() {
-      return this.$store.getters.isAuthenticated;
-    },
+    // auth() {
+    //   return this.$store.getters.isAuthenticated;
+    // },
     loading() {
       return this.$store.getters.getLoadingLogOut;
     },
